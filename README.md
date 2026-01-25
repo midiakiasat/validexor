@@ -1,4 +1,15 @@
-# VALIDEXOR
+```
+PRIM-004
+VALIDEXOR
+Deterministic verification
+
+STATUS: REGISTERED
+REGISTRY: https://speedkit.eu
+```
+
+Registered artifact. Identity governed by SPEEDKIT registry.
+
+---
 
 VALIDEXOR is a deterministic verifier.
 
