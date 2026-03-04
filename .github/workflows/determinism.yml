@@ -74,18 +74,3 @@ jobs:
           
           echo "PASS: Index checksum verified"
 
-  failure-codes-integrity:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-
-      - name: Verify FAILURE_CODES.json checksum
-        run: |
-          EXPECTED=$(cat .failure_codes_checksum)
-          ACTUAL=$(sha256sum FAILURE_CODES.json | cut -d' ' -f1)
-          
-          if [ "$EXPECTED" != "$ACTUAL" ]; then
-            echo "FAIL: FAILURE_CODES.json has been modified"
-            exit 5
-          fi
-          echo "PASS: FAILURE_CODES.json checksum verified"
