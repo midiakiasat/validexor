@@ -1,189 +1,46 @@
-```
-PRIM-004
-VALIDEXOR
-Deterministic verification
+# validexor
 
-STATUS: REGISTERED
-REGISTRY: https://speedkit.eu
-SNAPSHOT: https://speedkit.eu/REGISTRY_SNAPSHOT.json
-```
+## Purpose
 
-Registered artifact. Identity governed by SPEEDKIT registry.
+Atomic primitive: validity extraction / verdict normalization.
 
-STATUS: FINAL
+## Status
 
----
+- **Stability**: Experimental
+- **SemVer**: Not guaranteed until v1.0.0
+- **Security**: See **Security** section below
 
-VALIDEXOR is a deterministic verifier.
+## Scope
 
-It does not decide.
-It does not execute.
-It does not repair.
+- What this repo is responsible for
+- What it explicitly does **not** do
 
-It evaluates whether a claim is **verifiable against observable reality**.
+## Quickstart
 
----
+```bash
+# clone
+git clone https://github.com/Verifrax/validexor.git
+cd validexor
 
-## Philosophy
-
-VALIDEXOR exists to end ambiguity without creating authority.
-
-It is designed for moments where:
-
-* Claims must be checked, not debated
-* Language must be anchored to facts
-* Truth depends on falsifiability, not intent
-
-VALIDEXOR does not assert truth.
-It asserts whether truth *can be asserted*.
-
----
-
-## What It Is
-
-VALIDEXOR is a **verification primitive**.
-
-It inspects input and determines whether it satisfies the minimum conditions required for verification.
-
-The result is a verdict about **verifiability**, not correctness.
-
----
-
-## What It Is Not
-
-* Not a judge
-* Not a linter
-* Not an executor
-* Not an interpreter
-* Not an oracle
-
-VALIDEXOR never mutates state.
-
----
-
-## Behavior
-
-* Consumes input **exclusively** via `stdin`
-* Refuses silent invocation
-* Rejects speculative or hedged language
-* Requires at least one falsifiable anchor
-* Validates referenced git objects against repository state
-* Emits exactly one verdict
-* Exits immediately after evaluation
-
-No retries.
-No flags.
-No configuration.
-
----
-
-## Verdicts
-
-VALIDEXOR emits exactly one of the following:
-
-* `VERIFIED` — the claim is concrete and falsifiable
-* `UNVERIFIABLE` — the claim lacks sufficient anchors
-* `INVALID` — the claim contains speculation or invalid references
-
-The verdict concerns **structure**, not **truth**.
-
----
-
-## Usage
-
-VALIDEXOR is never run alone.
-It must receive a claim.
-
-```sh
-<command-producing-claim> | ./validexor.sh
+# install (adjust if needed)
+# (placeholder) npm install / pnpm install / go test ./... / etc.
 ```
 
-### Example
+## Repository layout
 
-```sh
-echo "build output hash is a3f9c21" | ./validexor.sh
-```
+- `/` Root sources
+- `/.github/` Issue + PR templates
+- `/docs/` Documentation (if present)
 
-Output:
+## Security
 
-```
-VERIFIED
-```
+- Report vulnerabilities privately: **security@verifrax.org**
+- Do **not** open public issues for sensitive findings
 
-```sh
-echo "this might be correct" | ./validexor.sh
-```
+## Contributing
 
-Output:
+See `CONTRIBUTING.md`.
 
-```
-INVALID
-```
+## License
 
----
-
-## Contract
-
-Once emitted:
-
-* The verdict stands
-* Interpretation is external
-* Responsibility remains with the claimant
-
-VALIDEXOR guarantees **verifiability**, not **accuracy**.
-
----
-
-## Design Constraints
-
-These constraints are intentional:
-
-* No configuration → no framing bias
-* No execution → no side effects
-* No judgment → no authority
-
-Verification precedes meaning.
-
----
-
-## Relationship to Other Artifacts
-
-* **GUILLOTINE** — executes
-* **IRREVOCULL** — judges
-* **ATTESTORIUM** — witnesses
-* **VALIDEXOR** — verifies
-
-Each artifact performs exactly one irreversible role.
-
----
-
-## Warning
-
-Verification can invalidate narratives.
-
-That is the point.
-
----
-
-## About
-
-VALIDEXOR is a minimal, deterministic verifier for claims that must survive contact with reality.
-
-If you want persuasion, do not use it.
-If you want verification, nothing else will do.
-
----
-
-## Responsibility Boundary
-
-This software is provided under the MIT License.
-
-The MIT License permits use, copying, modification, and redistribution of the code, but it does not provide assurance, certification, audit defense, operational guarantees, or liability coverage.
-
-Use of this software in environments where failure, compliance, legal exposure, or irreversible decisions matter requires an accountable party.
-
-The original maintainer is available for assurance, adaptation, and responsibility when such accountability is required.
-
-Contact: contact@speedkit.eu
-
-Authoritative signed records are issued separately and are not produced by the software.
+MIT. See `LICENSE`.
