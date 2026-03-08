@@ -1,0 +1,26 @@
+{
+  "name": "@verifrax/validexor",
+  "version": "0.1.0",
+  "description": "Verifrax primitive — verification primitive for deterministic irreversible systems.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Verifrax/validexor.git"
+  },
+  "homepage": "https://github.com/Verifrax/validexor#readme",
+  "bugs": {
+    "url": "https://github.com/Verifrax/validexor/issues"
+  },
+  "bin": {
+    "validexor": "validexor.sh"
+  },
+  "files": [
+    "validexor.sh",
+    "README.md",
+    "LICENSE",
+    "VERSION"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
