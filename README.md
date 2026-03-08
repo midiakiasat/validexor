@@ -1,189 +1,148 @@
-```
-PRIM-004
-VALIDEXOR
-Deterministic verification
+# VALIDEXOR
 
-STATUS: REGISTERED
-REGISTRY: https://speedkit.eu
-SNAPSHOT: https://speedkit.eu/REGISTRY_SNAPSHOT.json
-```
+Primitive ID: PRIM-005  
+Package: @verifrax/validexor  
+Binary: validexor
 
-Registered artifact. Identity governed by SPEEDKIT registry.
-
-STATUS: FINAL
+Verifrax primitive — verification primitive for deterministic irreversible systems.
 
 ---
 
-VALIDEXOR is a deterministic verifier.
+## Status
 
-It does not decide.
-It does not execute.
-It does not repair.
+Current release status: pre-stable primitive release line.
 
-It evaluates whether a claim is **verifiable against observable reality**.
+Canonical release target:
 
----
+package version: 0.1.0  
+tag: v0.1.0
 
-## Philosophy
-
-VALIDEXOR exists to end ambiguity without creating authority.
-
-It is designed for moments where:
-
-* Claims must be checked, not debated
-* Language must be anchored to facts
-* Truth depends on falsifiability, not intent
-
-VALIDEXOR does not assert truth.
-It asserts whether truth *can be asserted*.
+VALIDEXOR is part of the Verifrax primitive layer and follows the canonical primitive governance, naming, version, and packaging rules.
 
 ---
 
-## What It Is
+## Purpose
 
-VALIDEXOR is a **verification primitive**.
+VALIDEXOR verifies deterministic correctness after origin, custody, time, and boundary conditions have already been fixed.
 
-It inspects input and determines whether it satisfies the minimum conditions required for verification.
+Once an artifact has a stable origin, preserved custody, explicit time boundary, and enforced operating boundary, the system still needs deterministic verification of whether the artifact satisfies the relevant contract. VALIDEXOR exists to make that verification explicit, repeatable, and non-ambiguous.
 
-The result is a verdict about **verifiability**, not correctness.
-
----
-
-## What It Is Not
-
-* Not a judge
-* Not a linter
-* Not an executor
-* Not an interpreter
-* Not an oracle
-
-VALIDEXOR never mutates state.
+It does not establish origin. It does not preserve custody. It does not fix temporal order. It does not enforce boundary conditions. It does not witness, judge, or terminate. Its role is narrower: verify contract-level correctness under already-fixed prior conditions.
 
 ---
 
-## Behavior
+## What This Primitive Does
 
-* Consumes input **exclusively** via `stdin`
-* Refuses silent invocation
-* Rejects speculative or hedged language
-* Requires at least one falsifiable anchor
-* Validates referenced git objects against repository state
-* Emits exactly one verdict
-* Exits immediately after evaluation
-
-No retries.
-No flags.
-No configuration.
+- verifies an artifact or state against deterministic validation rules
+- distinguishes valid from invalid outcomes under a fixed contract
+- emits verification output suitable for downstream attestation and judgment
 
 ---
 
-## Verdicts
+## What This Primitive Does Not Do
 
-VALIDEXOR emits exactly one of the following:
+- does not establish first origin
+- does not preserve custody continuity
+- does not fix temporal ordering
+- does not enforce operational boundaries
+- does not witness or attest
+- does not judge validity
+- does not terminate lifecycle
 
-* `VERIFIED` — the claim is concrete and falsifiable
-* `UNVERIFIABLE` — the claim lacks sufficient anchors
-* `INVALID` — the claim contains speculation or invalid references
+---
 
-The verdict concerns **structure**, not **truth**.
+## Behavioral Contract
+
+Invocation model:
+
+executable: validexor  
+package: @verifrax/validexor  
+runtime: CLI-first
+
+The primitive operates on an artifact whose origin, custody, time, and boundary surfaces are already fixed.
+
+If the verification contract is absent, ambiguous, or non-deterministic, VALIDEXOR must not fabricate a valid result.
+
+Exit codes:
+
+0 — verification completed successfully  
+non-zero — invocation failed or contract violated
 
 ---
 
 ## Usage
 
-VALIDEXOR is never run alone.
-It must receive a claim.
+Install:
 
-```sh
-<command-producing-claim> | ./validexor.sh
-```
+npm install -g @verifrax/validexor
 
-### Example
+Execute:
 
-```sh
-echo "build output hash is a3f9c21" | ./validexor.sh
-```
+validexor artifact.json
 
-Output:
+stdin example:
 
-```
-VERIFIED
-```
-
-```sh
-echo "this might be correct" | ./validexor.sh
-```
-
-Output:
-
-```
-INVALID
-```
+cat artifact.json | validexor
 
 ---
 
-## Contract
+## Determinism Guarantees
 
-Once emitted:
+For identical canonical input, VALIDEXOR must produce identical verification output.
 
-* The verdict stands
-* Interpretation is external
-* Responsibility remains with the claimant
+No hidden environmental state may influence the result.
 
-VALIDEXOR guarantees **verifiability**, not **accuracy**.
+VALIDEXOR assumes an already-bounded origin, custody, time, and enforcement surface and does not substitute for those earlier primitives or for downstream attestation and judgment.
 
 ---
 
-## Design Constraints
+## Security Model
 
-These constraints are intentional:
+VALIDEXOR protects against ambiguity in contract verification.
 
-* No configuration → no framing bias
-* No execution → no side effects
-* No judgment → no authority
-
-Verification precedes meaning.
+Its security value is to prevent silent drift between what is claimed to satisfy a contract and what deterministically does satisfy it. It does not itself attest, judge, or terminate lifecycle state.
 
 ---
 
-## Relationship to Other Artifacts
+## Relationship to Other Primitives
 
-* **GUILLOTINE** — executes
-* **IRREVOCULL** — judges
-* **ATTESTORIUM** — witnesses
-* **VALIDEXOR** — verifies
+Canonical primitive order:
 
-Each artifact performs exactly one irreversible role.
+1 originseal  
+2 archicustos  
+3 kairoclasp  
+4 limenward  
+5 validexor  
+6 attestorium  
+7 irrevocull  
+8 guillotine
 
----
+Repositories:
 
-## Warning
-
-Verification can invalidate narratives.
-
-That is the point.
-
----
-
-## About
-
-VALIDEXOR is a minimal, deterministic verifier for claims that must survive contact with reality.
-
-If you want persuasion, do not use it.
-If you want verification, nothing else will do.
+https://github.com/Verifrax/originseal  
+https://github.com/Verifrax/archicustos  
+https://github.com/Verifrax/kairoclasp  
+https://github.com/Verifrax/limenward  
+https://github.com/Verifrax/validexor  
+https://github.com/Verifrax/attestorium  
+https://github.com/Verifrax/irrevocull  
+https://github.com/Verifrax/guillotine
 
 ---
 
-## Responsibility Boundary
+## Installation
 
-This software is provided under the MIT License.
+npm install -g @verifrax/validexor
 
-The MIT License permits use, copying, modification, and redistribution of the code, but it does not provide assurance, certification, audit defense, operational guarantees, or liability coverage.
+command -v validexor
 
-Use of this software in environments where failure, compliance, legal exposure, or irreversible decisions matter requires an accountable party.
+Repository:
+- GitHub: https://github.com/Verifrax/validexor
+- Package: @verifrax/validexor
+- Binary: validexor
 
-The original maintainer is available for assurance, adaptation, and responsibility when such accountability is required.
+---
 
-Contact: contact@speedkit.eu
+## License
 
-Authoritative signed records are issued separately and are not produced by the software.
+MIT
